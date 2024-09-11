@@ -1,0 +1,168 @@
+<mat-toolbar>QontRol</mat-toolbar>
+
+<mat-list>
+  <mat-list-item>Usuario principal</mat-list-item>
+  <mat-divider></mat-divider>
+
+
+  <form [formGroup]="form" (ngSubmit)="saveTutorial()" >
+    <!-- <div>
+      <mat-form-field>
+        <mat-label for="id">ID</mat-label>
+        <input matInput id="id" formControlName="id">
+      </mat-form-field>
+    </div> -->
+    <div>
+      
+      <mat-form-field>
+        <mat-label for="docType">Tipo de Documento</mat-label>
+        <!-- <input id="docType" formControlName="docType" /> -->
+        <mat-select required formControlName="docType">
+          <mat-option value="CC">Cedúla de Ciudadania</mat-option>
+          <mat-option value="CE">Cedúla de Extranjeria</mat-option>
+          <mat-option value="PT">Pasaporte</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('docType')?.hasError('required')">*Tipo de Documento requerido</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        	<mat-label for="docNumber">Número de Documento</mat-label>
+          <input required matInput id="docNumber" formControlName="docNumber" />
+          <mat-error *ngIf="form.get('docNumber')?.hasError('required')">*Número de Documento requerido</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label for="name">Nombres</mat-label>
+        <input required matInput  id="name" formControlName="name" />
+        <mat-error *ngIf="form.get('name')?.hasError('required')">*Nombres requeridos</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label for="lastName">Apellidos</mat-label>
+        <input required matInput id="lastName" formControlName="lastName" />
+        <mat-error *ngIf="form.get('lastName')?.hasError('required')">*Apellidos requeridos</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label for="email">Email</mat-label>
+        <input matInput required formControlName="email"/>
+        <mat-error *ngIf="form.get('email')?.hasError('required')">*Email requerido</mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">*Email inválido</mat-error>
+      </mat-form-field>  
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label for="phone">Celular</mat-label>
+        <input required matInput id="phone" formControlName="phone" />
+        <mat-error *ngIf="form.get('phone')?.hasError('required')">*Celular requerido</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label for="address">Dirección</mat-label>
+        <input required matInput id="address" formControlName="address" />
+        <mat-error *ngIf="form.get('address')?.hasError('required')">*Dirección requerida</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label for="photo">Photo URL</mat-label>
+        <input matInput id="photo" formControlName="photo" />
+      </mat-form-field>
+    </div>
+  
+
+
+  <mat-list-item>Dependientes</mat-list-item>
+    <mat-hint>*Ingrese solo si tiene dependientes</mat-hint>
+    <mat-divider></mat-divider>
+    <div formArrayName="dependers">
+      <div *ngFor="let depender of dependers.controls; let i = index">
+        <div [formGroupName]="i">
+          
+          <div>
+          <mat-form-field>
+            <mat-label for="depDocType">Tipo de Documento</mat-label>
+            <!-- <input id="docType" formControlName="docType" /> -->
+            <mat-select required formControlName="ddocType">
+              <mat-option value="CC">Cedúla de Ciudadania</mat-option>
+              <mat-option value="CE">Cedúla de Extranjeria</mat-option>
+              <mat-option value="PT">Pasaporte</mat-option>
+            </mat-select>
+           <mat-error *ngIf="form.get('docType')?.hasError('required')">*Tipo de Documento requerido</mat-error>
+
+          </mat-form-field>  
+          <div>
+            
+          </div>  
+        </div>            
+
+          <div>
+          <mat-form-field>
+            <mat-label for="depDocNumber">Número de Documento</mat-label>
+            <input required matInput id="depDocNumber" formControlName="docNumber" />
+            <mat-error *ngIf="form.get('docNumber')?.hasError('required')">*Número de Documento requerido</mat-error>
+          </mat-form-field>
+        </div>
+          
+        <div>
+          <mat-form-field>
+            <mat-label for="depName">Nombres</mat-label>
+            <input required matInput  id="depName" formControlName="name" />
+            <mat-error *ngIf="form.get('name')?.hasError('required')">*Nombres requeridos</mat-error>
+          </mat-form-field>
+        </div>
+    
+        <div>
+          <mat-form-field>
+            <mat-label for="depLastName">Apellidos</mat-label>
+            <input required matInput id="depLastName" formControlName="lastName" />
+            <mat-error *ngIf="form.get('lastName')?.hasError('required')">*Apellidos requeridos</mat-error>2
+          </mat-form-field>
+        </div>
+    
+        <div>
+          <mat-form-field>
+            <mat-label for="depEmail">Email</mat-label>
+            <input matInput id="depEmail" formControlName="email" />
+            <mat-error *ngIf="form.get('email')?.hasError('required')">*Email requerido</mat-error>
+            <mat-error *ngIf="form.get('email')?.hasError('email')">*Email inválido</mat-error>
+          </mat-form-field>  
+        </div>
+    
+        <div>
+          <mat-form-field>
+            <mat-label for="depPhone">Celular</mat-label>
+            <input required matInput id="depPhone" formControlName="phone" />
+            <mat-error *ngIf="form.get('phone')?.hasError('required')">*Celular requerido</mat-error>
+          </mat-form-field>
+        </div>
+          
+          <button mat-stroked-button (click)="removeDepender(i)">Eliminar Dependiente</button>
+        </div>
+      </div>
+      <button mat-stroked-button (click)="addDepender()">Agregar Dependiente</button>
+    </div>
+  
+
+    <button mat-stroked-button [disabled]="!form.valid" type="submit">Submit</button>
+
+    <div *ngIf="submitted && qrCodeDataUrl">
+      <h2>QR Code:</h2>
+      <img [src]="qrCodeDataUrl" alt="QR Code" />
+      <button mat-stroked-button (click)="downloadQR()">Download QR Code</button>
+    </div>
+  </form>
+</mat-list>
+  
