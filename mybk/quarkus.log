@@ -1,0 +1,10 @@
+2024-07-30 11:51:38,579 assert mybk-dev.jar[12692] INFO  [org.apa.cam.qua.cor.CamelBootstrapRecorder] (Quarkus Main Thread) Bootstrap runtime: org.apache.camel.quarkus.main.CamelMainRuntime
+2024-07-30 11:51:38,579 assert mybk-dev.jar[12692] INFO  [org.apa.cam.mai.MainSupport] (Quarkus Main Thread) Apache Camel (Main) 4.6.0 is starting
+2024-07-30 11:51:38,586 assert mybk-dev.jar[12692] INFO  [org.apa.cam.imp.eng.AbstractCamelContext] (Quarkus Main Thread) Apache Camel 4.6.0 (camel-4) is starting
+2024-07-30 11:51:38,587 assert mybk-dev.jar[12692] INFO  [org.apa.cam.imp.eng.AbstractCamelContext] (Quarkus Main Thread) Routes startup (total:1)
+2024-07-30 11:51:38,588 assert mybk-dev.jar[12692] INFO  [org.apa.cam.imp.eng.AbstractCamelContext] (Quarkus Main Thread)     Started route4 (rest://post:/users)
+2024-07-30 11:51:38,588 assert mybk-dev.jar[12692] INFO  [org.apa.cam.imp.eng.AbstractCamelContext] (Quarkus Main Thread) Apache Camel 4.6.0 (camel-4) started in 1ms (build:0ms init:0ms start:1ms)
+2024-07-30 11:51:38,589 assert mybk-dev.jar[12692] INFO  [io.quarkus] (Quarkus Main Thread) mybk 1.0.0 on JVM (powered by Quarkus 3.12.3) started in 0.389s. Listening on: http://0.0.0.0:8080
+2024-07-30 11:51:38,589 assert mybk-dev.jar[12692] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+2024-07-30 11:51:38,589 assert mybk-dev.jar[12692] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [camel-attachments, camel-core, camel-http, camel-jackson, camel-platform-http, camel-rest, cdi, rest, rest-jackson, smallrye-context-propagation, vertx]
+2024-07-30 11:51:38,589 assert mybk-dev.jar[12692] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (Timer-0) Live reload total time: 0.403s 
