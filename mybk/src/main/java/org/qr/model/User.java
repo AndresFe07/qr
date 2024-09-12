@@ -7,19 +7,22 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 @Getter
 @Setter
 @JsonAutoDetect
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = -1L; 
     @NonNull
-    private String id;
+    private int id;
     private String docType;
-    private String docNumber;
+    private int docNumber;
     private String name;
     private String lastName;
     private String email;
-    private String phone;
+    private int phone;
     private String address;
     private String photo;
     private List<Dependers> dependers;

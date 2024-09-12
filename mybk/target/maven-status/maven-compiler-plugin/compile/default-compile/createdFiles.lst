@@ -1,4 +1,3 @@
-org\qr\CamelRouteBuilder.class
-org\qr\process\GenerateQR.class
-org\qr\model\User.class
-org\qr\model\Dependers.class
+org/qr/model/User.class
+org/qr/model/Dependers.class
+org/qr/CamelRouteBuilder.class

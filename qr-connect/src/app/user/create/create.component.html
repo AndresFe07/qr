@@ -1,0 +1,199 @@
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">Ingreso Usuario</a>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-4">
+    <form [formGroup]="form" (ngSubmit)="saveTutorial()">
+        <div class="container mt-4">
+            <!-- Usuario Principal -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <h4>Usuario Principal</h4>
+                    <hr>
+                    <!-- Tipo y Número de Documento en una Línea -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="docType">Tipo de Documento</label>
+                            <select class="form-control" id="docType" formControlName="docType" required>
+                                <option value="">Seleccione</option>
+                                <option value="CC">Cédula de Ciudadanía</option>
+                                <option value="CE">Cédula de Extranjería</option>
+                                <option value="PT">Pasaporte</option>
+                            </select>
+                            <div *ngIf="form.get('docType')?.hasError('required')" class="text-danger">
+                                *Tipo de Documento requerido
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="docNumber">Número de Documento</label>
+                            <input type="text" class="form-control" id="docNumber" formControlName="docNumber" required>
+                            <div *ngIf="form.get('docNumber')?.hasError('required')" class="text-danger">
+                                *Número de Documento requerido
+                            </div>
+                            <div *ngIf="form.get('docNumber')?.hasError('pattern')" class="text-danger">
+                                *Ingrese número sin puntos ni comas
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Nombres</label>
+                            <input type="text" class="form-control" id="name" formControlName="name" required>
+                            <div *ngIf="form.get('name')?.hasError('required')" class="text-danger">
+                                *Nombres requeridos
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="lastName">Apellidos</label>
+                            <input type="text" class="form-control" id="lastName" formControlName="lastName" required>
+                            <div *ngIf="form.get('lastName')?.hasError('required')" class="text-danger">
+                                *Apellidos requeridos
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" formControlName="email" required>
+                            <div *ngIf="form.get('email')?.hasError('required')" class="text-danger">
+                                *Email requerido
+                            </div>
+                            <div *ngIf="form.get('email')?.hasError('email')" class="text-danger">
+                                *Email inválido
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="phone">Celular</label>
+                            <input type="text" class="form-control" id="phone" formControlName="phone" required>
+                            <div *ngIf="form.get('phone')?.hasError('required')" class="text-danger">
+                                *Celular requerido
+                            </div>
+                            <div *ngIf="form.get('phone')?.hasError('pattern')" class="text-danger">
+                                *Ingrese solo números
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="address">Dirección</label>
+                            <input type="text" class="form-control" id="address" formControlName="address" required>
+                            <div *ngIf="form.get('address')?.hasError('required')" class="text-danger">
+                                *Dirección requerida
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="photo">Photo URL</label>
+                            <input type="text" class="form-control" id="photo" formControlName="photo">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dependientes -->
+                <div class="col-md-6">
+                    <h4>Dependientes</h4>
+                    <small class="form-text text-muted">*Ingrese solo si tiene dependientes</small>
+                    <hr>
+                    <div formArrayName="dependers">
+                        <div *ngFor="let depender of dependers.controls; let i = index" [formGroupName]="i">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <!-- Tipo y Número de Documento en una Línea para Dependiente -->
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="depDocType{{i}}">Tipo de Documento</label>
+                                            <select class="form-control" id="depDocType{{i}}" formControlName="docType"
+                                                required>
+                                                <option value="">Seleccione</option>
+                                                <option value="CC">Cédula de Ciudadanía</option>
+                                                <option value="CE">Cédula de Extranjería</option>
+                                                <option value="PT">Pasaporte</option>
+                                            </select>
+                                            <div *ngIf="depender.get('docType')?.hasError('required')"
+                                                class="text-danger">
+                                                *Tipo de Documento requerido
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="depDocNumber{{i}}">Número de Documento</label>
+                                            <input type="text" class="form-control" id="depDocNumber{{i}}"
+                                                formControlName="docNumber" required>
+                                            <div *ngIf="depender.get('docNumber')?.hasError('required')"
+                                                class="text-danger">
+                                                *Número de Documento requerido
+                                            </div>
+                                            <div *ngIf="depender.get('docNumber')?.hasError('pattern')"
+                                                class="text-danger">
+                                                *Ingrese número sin puntos ni comas
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Otros Campos para Dependiente -->
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="depName{{i}}">Nombres</label>
+                                            <input type="text" class="form-control" id="depName{{i}}"
+                                                formControlName="name" required>
+                                            <div *ngIf="depender.get('name')?.hasError('required')" class="text-danger">
+                                                *Nombres requeridos
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="depLastName{{i}}">Apellidos</label>
+                                            <input type="text" class="form-control" id="depLastName{{i}}"
+                                                formControlName="lastName" required>
+                                            <div *ngIf="depender.get('lastName')?.hasError('required')"
+                                                class="text-danger">
+                                                *Apellidos requeridos
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="depEmail{{i}}">Email</label>
+                                            <input type="email" class="form-control" id="depEmail{{i}}"
+                                                formControlName="email">
+                                            <div *ngIf="depender.get('email')?.hasError('required')"
+                                                class="text-danger">
+                                                *Email requerido
+                                            </div>
+                                            <div *ngIf="depender.get('email')?.hasError('email')" class="text-danger">
+                                                *Email inválido
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="depPhone{{i}}">Celular</label>
+                                            <input type="text" class="form-control" id="depPhone{{i}}"
+                                                formControlName="phone" required>
+                                            <div *ngIf="depender.get('phone')?.hasError('required')"
+                                                class="text-danger">
+                                                *Celular requerido
+                                            </div>
+                                            <div *ngIf="depender.get('phone')?.hasError('pattern')" class="text-danger">
+                                                *Ingrese número sin puntos ni comas
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-danger" (click)="removeDepender(i)">Eliminar
+                                        Dependiente</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" (click)="addDepender()">Agregar
+                            Dependiente</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-success" [disabled]="!form.valid">Submit</button>
+
+            <!-- QR Code Section -->
+            <div *ngIf="submitted && qrCodeDataUrl" class="mt-4">
+                <h2>QR Code:</h2>
+                <img [src]="qrCodeDataUrl" alt="QR Code">
+                <button type="button" class="btn btn-info" (click)="downloadQR()">Download QR Code</button>
+            </div>
+        </div>
+    </form>
+</div>
